@@ -41,3 +41,11 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Board
+    userID: 1
+    uniqueID: 1826126501
+    locked: 0
+  - name: Signs
+    userID: 2
+    uniqueID: 1440402435
+    locked: 0

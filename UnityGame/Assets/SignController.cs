@@ -34,7 +34,12 @@ public class SignController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//Initialize(ROCK_ID);
+		Initialize(ROCK_ID);
+		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
+		                                        "x", 0,
+		                                        "time", 10,
+		                                        "islocal", true,
+		                                        "easeType", "linear"));
 	}
 	
 	// Update is called once per frame
