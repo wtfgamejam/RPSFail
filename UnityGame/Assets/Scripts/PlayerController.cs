@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log("Pressed Scissors");
 			SendSign(Sign.SCISSORS_ID);
 		}
+		
+		if (Input.GetButtonDown ("Whoa" + id)) {
+			Debug.Log("Pressed Whoa");
+		}
 	}
 
 	public void SendSign( int signType )

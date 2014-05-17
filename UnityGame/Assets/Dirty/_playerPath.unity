@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   meter: 0
-  id: 0
+  id: 1
   currentSign: 0
 --- !u!1001 &789716262
 Prefab:
