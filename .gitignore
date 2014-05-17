@@ -5,4 +5,4 @@ UnityGame/Temp/*
 *.sln
 *.user
 *.userprefs
-*.DS_store
+.DS_store
