@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SignController : MonoBehaviour {
+public class Sign : MonoBehaviour {
 
 	public const int BASE_ID = 0;
 	public const int ROCK_ID = 1;
@@ -34,7 +34,6 @@ public class SignController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Initialize(ROCK_ID);
 		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
 		                                        "x", 0,
 		                                        "time", 10,
