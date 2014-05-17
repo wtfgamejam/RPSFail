@@ -1,8 +1,8 @@
 UnityGame/Library/*
 UnityGame/Temp/*
-*.csproj
-*.unityproj
-*.sln
-*.user
-*.userprefs
-.DS_store
+UnityGame/*.csproj
+UnityGame/*.unityproj
+UnityGame/UnityGame-csharp.sln
+UnityGame/*.user
+UnityGame/*.userprefs
+UnityGame/.DS_store
