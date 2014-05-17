@@ -2,7 +2,7 @@ UnityGame/Library/*
 UnityGame/Temp/*
 UnityGame/*.csproj
 UnityGame/*.unityproj
-UnityGame/UnityGame-csharp.sln
+UnityGame/*.sln
 UnityGame/*.user
 UnityGame/*.userprefs
 UnityGame/.DS_store
