@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown ("Scissors" + id)) {
 			Debug.Log("Pressed Scissors");
 		}
+		
+		if (Input.GetButtonDown ("Whoa" + id)) {
+			Debug.Log("Pressed Whoa");
+		}
 	}
 
 }
