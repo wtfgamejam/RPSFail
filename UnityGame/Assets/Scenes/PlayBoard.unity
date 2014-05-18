@@ -111,11 +111,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: m_Name
-      value: player2
+      value: player3
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: id
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
@@ -288,8 +288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 547187630}
-  player2: {fileID: 728291867}
-  player3: {fileID: 1627421538}
+  player2: {fileID: 1627421538}
+  player3: {fileID: 728291867}
 --- !u!1 &618896658
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ GameObject:
   - 212: {fileID: 728291868}
   - 114: {fileID: 728291867}
   m_Layer: 0
-  m_Name: player2
+  m_Name: player3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  id: 2
+  id: 3
   currentSign: {fileID: 0}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
 --- !u!212 &728291868
@@ -451,11 +451,11 @@ Prefab:
     - target: {fileID: 11400000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
       propertyPath: player2
       value: 
-      objectReference: {fileID: 728291867}
+      objectReference: {fileID: 1627421538}
     - target: {fileID: 11400000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
       propertyPath: player3
       value: 
-      objectReference: {fileID: 1627421538}
+      objectReference: {fileID: 728291867}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
   m_RootGameObject: {fileID: 590649354}
@@ -487,8 +487,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 547187629}
-  - {fileID: 728291866}
   - {fileID: 1627421537}
+  - {fileID: 728291866}
   m_Father: {fileID: 618896660}
 --- !u!1001 &1155545447
 Prefab:
@@ -626,11 +626,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: m_Name
-      value: player3
+      value: player2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: id
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
@@ -648,7 +648,7 @@ GameObject:
   - 212: {fileID: 1627421539}
   - 114: {fileID: 1627421538}
   m_Layer: 0
-  m_Name: player3
+  m_Name: player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  id: 3
+  id: 2
   currentSign: {fileID: 0}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
 --- !u!212 &1627421539
