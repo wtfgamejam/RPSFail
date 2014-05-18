@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Main : MonoBehaviour {
-
-	public int currentSign = 0;
+	
+	private Sign currentSign;
 
 	// Use this for initialization
 	void Start () {
@@ -15,25 +15,33 @@ public class Main : MonoBehaviour {
 	
 	}
 
-	public void Resolve(int in_newSign)
+	public void Resolve(Sign in_sign)
 	{
-		int test = ((currentSign + 1) % 3);
+		if(currentSign == null)
+		{
+			currentSign = in_sign;
+			return;
+		}
+
+		int test = ((currentSign.type + 1) % 3);
 		Debug.Log("test? "+test);
 		// is win?
-		if( in_newSign == test || currentSign == 0 )
+		if( in_sign.type == test )
 		{
 			Debug.Log ("WINNER!");
 
-			if(in_newSign == currentSign)
-			{
-				Debug.Log ("well actually a tie!");
-			}
-
-			currentSign = in_newSign;
+			Destroy(currentSign.gameObject);
+			currentSign = in_sign;
 		}
 		else
 		{
 			Debug.Log ("LOSE!");
+			Destroy(in_sign.gameObject);
+			if(in_sign.type == currentSign.type)
+			{
+				Destroy(currentSign.gameObject);
+				Debug.Log ("well actually a tie!");
+			}
 		}
 	}
 

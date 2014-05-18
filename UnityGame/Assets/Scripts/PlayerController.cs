@@ -6,13 +6,13 @@ public class PlayerController : MonoBehaviour {
 	public int score;
 	public int meter;
 	public int id;
-	public int currentSign;
+	public Sign currentSign;
 
 	public Sign sign;
 
 	// Use this for initialization
 	void Start () {
-		currentSign = 0;
+
 	}
 	
 	// Update is called once per frame
@@ -39,11 +39,11 @@ public class PlayerController : MonoBehaviour {
 
 	public void SendSign( int signType )
 	{
-		if (currentSign == 0) { 
-			currentSign = signType;
+		if (currentSign == null) { 
 			Sign signClone = (Sign) Instantiate(sign, transform.position, transform.rotation);
 			signClone.transform.parent = gameObject.transform.parent;
 			signClone.Initialize(signType, id);
+			currentSign = signClone;
 		}
 	}
 }
