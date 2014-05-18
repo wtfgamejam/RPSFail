@@ -70,8 +70,15 @@ public class Sign : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (path_percent_complete < 20 && !isScoring) {
+		if (path_percent_complete < 25 && !isScoring) {
 			// Drop in the center
+			iTween.StopByName("signMove" + player_id);
+			iTween.MoveTo(gameObject, iTween.Hash ("y", 0,
+			                                       "x", 0,
+			                                       "time", .5,
+			                                       "islocal", true,
+			                                       "easeType", "inBack",
+			                                       "name", "signMove" + player_id));
 			isScoring = true;
 
 			main.Resolve(type);
@@ -79,6 +86,7 @@ public class Sign : MonoBehaviour {
 		}
 		if (path_percent_complete < 80 && !isMeterCharging) {
 			isMeterCharging = true;
+			iTween.RotateAdd(gameObject, iTween.Hash("z",360) );
 		}
 	}
 
