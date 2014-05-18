@@ -26,6 +26,8 @@ public class Sign : MonoBehaviour {
 
 	public Dictionary<int, string> spriteNames;
 
+	private Main main;
+
 // HOUSEKEEPING
 	void Awake() {
 		spriteNames = new Dictionary<int, string>();
@@ -36,17 +38,32 @@ public class Sign : MonoBehaviour {
 
 		isScoring = false;
 		isVisible = false;
+
+		GameObject maincamera = GameObject.Find("MainCamera");
+		if ( maincamera )
+		{
+			main = maincamera.GetComponent < Main > ();
+			
+			if ( !main )
+			{
+				Debug.Log( "main camera not found" );
+			}
+		}
+		else
+		{
+			Debug.Log( "main camera NOT FOUND ...." );
+		}
 	}
 
 	// Use this for initialization
 	void Start () {
-	iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
+		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
 	                                        "x", 0,
 	                                        "time", 7,
 	                                        "islocal", true,
 	                                        "easeType", "linear",
 	                                        "name", "signMove" + player_id));
-	path_length = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
+		path_length = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
 	
 
 	}
@@ -63,6 +80,9 @@ public class Sign : MonoBehaviour {
 			                                       "easeType", "easeInBack",
 			                                       "name", "signMove" + player_id));
 			isScoring = true;
+
+			main.Resolve(type);
+
 		}
 		if (path_percent_complete < 80 && !isMeterCharging) {
 			isMeterCharging = true;
@@ -73,10 +93,10 @@ public class Sign : MonoBehaviour {
 	// 
 	void FixedUpdate () {
 		path_location = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
-		print (path_location);
+		//print (path_location);
 
 		path_percent_complete = path_location / path_length * 100;
-		print (Mathf.Round (path_percent_complete));
+		//print (Mathf.Round (path_percent_complete));
 	}
 
 	public void Initialize(int in_type, int in_player_id)
