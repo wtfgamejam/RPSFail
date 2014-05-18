@@ -8,10 +8,12 @@ public class Sign : MonoBehaviour {
 	public const int ROCK_ID = 1;
 	public const int PAPER_ID = 2;
 	public const int SCISSORS_ID = 3;
-	public const string BASE_NAME = "base";
+	public const string BASE_NAME = "hidden";
 	public const string ROCK_NAME = "rock";
 	public const string PAPER_NAME = "paper";
 	public const string SCISSORS_NAME = "scissors";
+
+	private const float SPRITE_SCALE = 0.5f;
 
 	private float m_speed;
 	private int m_type;
@@ -38,6 +40,9 @@ public class Sign : MonoBehaviour {
 
 		isScoring = false;
 		isVisible = false;
+
+		// Set scale
+		gameObject.transform.localScale = new Vector3(SPRITE_SCALE, SPRITE_SCALE, SPRITE_SCALE);
 
 		GameObject maincamera = GameObject.Find("MainCamera");
 		if ( maincamera )
@@ -70,6 +75,12 @@ public class Sign : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		path_location = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
+		//print (path_location);
+		
+		path_percent_complete = path_location / path_length * 100;
+		//print (Mathf.Round (path_percent_complete));
+		
 		if (path_percent_complete < 25 && !isScoring) {
 			// Drop in the center
 			iTween.StopByName("signMove" + player_id);
@@ -80,31 +91,27 @@ public class Sign : MonoBehaviour {
 			                                       "easeType", "easeInBack",
 			                                       "name", "signMove" + player_id));
 			isScoring = true;
-
+			
 			main.Resolve(type);
-
+			
 		}
 		if (path_percent_complete < 80 && !isMeterCharging) {
 			isMeterCharging = true;
+			isVisible = true;
 			iTween.RotateAdd(gameObject, iTween.Hash("y",180) );
 		}
 	}
 
 	// 
 	void FixedUpdate () {
-		path_location = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
-		//print (path_location);
 
-		path_percent_complete = path_location / path_length * 100;
-		//print (Mathf.Round (path_percent_complete));
 	}
 
 	public void Initialize(int in_type, int in_player_id)
 	{
 		player_id = in_player_id;
-		print (player_id);
 		type = in_type;
-		isVisible = true;
+		isVisible = false;
 
 	}
 
@@ -130,8 +137,10 @@ public class Sign : MonoBehaviour {
 		get {return m_type;}
 		set {
 			m_type = value;
+			Debug.Log ("Is Visible: " + isVisible);
 			// Change sprite here, based on visible property
 			if(isVisible) UpdateSprite(m_type);
+			else UpdateSprite(BASE_ID);
 		}
 	}
 	
@@ -153,7 +162,7 @@ public class Sign : MonoBehaviour {
 		set {
 			m_visible = value;
 			// Change sprite to type if visible
-			UpdateSprite(m_type);
+			if(m_visible) UpdateSprite(m_type);
 		}
 	}
 }
