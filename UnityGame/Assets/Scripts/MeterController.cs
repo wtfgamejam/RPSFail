@@ -25,7 +25,7 @@ public class MeterController : MonoBehaviour {
 	}
 
 	public void StartMeter () {
-		InvokeRepeating ("UpdateMeter", 0.1f, 0.05f);
+		InvokeRepeating ("UpdateMeter", 0.1f, 0.0375f);
 	}
 	
 	public void StopMeter () {

@@ -64,11 +64,11 @@ public class Sign : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
-	                                        "x", 0,
-	                                        "time", 7,
-	                                        "islocal", true,
-	                                        "easeType", "linear",
-	                                        "name", "signMove" + player_id));
+	                                        	"x", 0,
+	                                        	"time", 7,
+	                                        	"islocal", true,
+	                                        	"easeType", "linear",
+	                                        	"name", "signMove" + player_id));
 		// Rotate to north
 		gameObject.transform.localEulerAngles = new Vector3(0,0,0);
 
@@ -106,14 +106,20 @@ public class Sign : MonoBehaviour {
 		}
 		if (path_percent_complete < 80 && !isScoring && !isMeterCharging) {
 			isMeterCharging = true;
-			isVisible = true;
-			iTween.RotateAdd(gameObject, iTween.Hash("y",180) );
+			iTween.RotateAdd(gameObject, iTween.Hash("y",180, 
+			                                         "easeType", "easeInBack",
+			                                         "oncomplete","RotateComplete",
+			                                         "speed", 500,
+			                                         "onompletetarget", gameObject) );
 		}
 	}
 
-	// 
-	void FixedUpdate () {
+	public void RotateComplete () {
+		isVisible = true;
+	}
 
+	public void OnDestroy() {
+	
 	}
 
 	public void Initialize(int in_type, int in_player_id)
