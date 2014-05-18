@@ -68,6 +68,7 @@ public class Sign : MonoBehaviour {
 	                                        "islocal", true,
 	                                        "easeType", "linear",
 	                                        "name", "signMove" + player_id));
+		gameObject.transform.localEulerAngles = new Vector3(0,0,0);
 		path_length = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
 	
 
@@ -89,7 +90,7 @@ public class Sign : MonoBehaviour {
 			                                       "time", .5,
 			                                       "islocal", true,
 			                                       "easeType", "easeInBack",
-			                                       "name", "signMove" + player_id));
+			                                       "name", "signBounce" + player_id));
 			isScoring = true;
 			
 			main.Resolve(this);
