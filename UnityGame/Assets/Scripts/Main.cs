@@ -17,17 +17,22 @@ public class Main : MonoBehaviour {
 
 	public void Resolve(int in_newSign)
 	{
-		int test = ((currentSign + 1) % 3) + 1;
+		int test = ((currentSign + 1) % 3);
 		Debug.Log("test? "+test);
 		// is win?
-		if( in_newSign == test || in_newSign == currentSign )
+		if( in_newSign == test || currentSign == 0 )
 		{
 			Debug.Log ("WINNER!");
+
+			if(in_newSign == currentSign)
+			{
+				Debug.Log ("well actually a tie!");
+			}
+
 			currentSign = in_newSign;
 		}
 		else
 		{
-			if(currentSign == 0 ) currentSign = in_newSign;
 			Debug.Log ("LOSE!");
 		}
 	}
