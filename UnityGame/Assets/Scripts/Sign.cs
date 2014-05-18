@@ -118,6 +118,7 @@ public class Sign : MonoBehaviour {
 
 	public void Initialize(int in_type, int in_player_id)
 	{
+		Debug.Log("Player Id "+in_player_id);
 		player_id = in_player_id;
 		type = in_type;
 		isVisible = false;

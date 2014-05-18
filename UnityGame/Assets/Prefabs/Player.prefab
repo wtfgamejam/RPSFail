@@ -39,9 +39,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  meter: 0
   id: 0
-  currentSign: 0
+  currentSign: {fileID: 0}
+  meter: {fileID: 11400000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
+  sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
