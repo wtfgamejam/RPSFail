@@ -40,7 +40,6 @@ public class Main : MonoBehaviour {
 		int test = ((currentSign.type + 1) % 3);
 		// Scissors resolves to 0 after mod, change it to 3
 		if(test == 0) test = 3;
-		Debug.Log("test? "+test);
 
 		// if the current sign + 1 is equal to in_sign
 		if( in_sign.type == test )
@@ -67,7 +66,7 @@ public class Main : MonoBehaviour {
 
 	public void MeterCharging(Sign sign) {
 		PlayerController player = players [sign.player_id];
-		print ("isMeterCharging: " + sign.isMeterCharging);
+		// Debug.Log ("isMeterCharging: " + sign.isMeterCharging);
 		if (sign.isMeterCharging) {
 			player.StartMeter ();
 		} else {

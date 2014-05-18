@@ -135,8 +135,8 @@ public class Sign : MonoBehaviour {
 
 	private void UpdateSprite(int in_type)
 	{
-		Debug.Log(in_type);
-		Debug.Log(spriteNames[in_type]);
+//		Debug.Log(in_type);
+//		Debug.Log(spriteNames[in_type]);
 		//Does loading a rescource every time cause a problem?
 		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load(spriteNames[in_type], typeof(Sprite)) as Sprite;
 	}
