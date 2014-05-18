@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: SignOrigin
+  m_Name: Meter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,13 +36,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc78dbbc048ef43fda2a9aac001176e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 078c9325e17fd437fa59a24415d5c9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  id: 0
-  currentSign: {fileID: 0}
-  sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

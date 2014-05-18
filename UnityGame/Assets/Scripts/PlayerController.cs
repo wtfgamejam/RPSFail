@@ -6,15 +6,14 @@ public class PlayerController : MonoBehaviour {
 	public int score;
 	public int id;
 	public Sign currentSign;
-
-	private int m_meter;
-
+	
+	public MeterController meter;
 	public Sign sign;
 
 	// Use this for initialization
 	void Start () {
 		//InvokeRepeating ("UpdateMeter", 1.5f, 0.05f);
-		renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, meter)); 
+		//renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, meter)); 
 	}
 	
 	// Update is called once per frame
@@ -41,21 +40,12 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	void UpdateMeter () {
-		if (meter <= 100) {
-			meter += 1;
-			if ( meter > 0 ){
-				renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, meter)); 
-			}
-		}
-	}
-
 	public void StartMeter () {
-		InvokeRepeating ("UpdateMeter", 0.1f, 0.05f);
+		meter.StartMeter();
 	}
-
+	
 	public void StopMeter () {
-		CancelInvoke ();
+		meter.StopMeter();
 	}
 
 	public void SendSign( int signType )
@@ -68,9 +58,5 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public int meter
-	{
-		get {return m_meter;}
-		set {m_meter = value;}
-	}
+
 }
