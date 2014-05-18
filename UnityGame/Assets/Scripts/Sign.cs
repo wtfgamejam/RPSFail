@@ -83,13 +83,16 @@ public class Sign : MonoBehaviour {
 		
 		if (path_percent_complete < 25 && !isScoring) {
 			// Drop in the center
-			iTween.StopByName("signMove" + player_id);
-			iTween.MoveTo(gameObject, iTween.Hash ("y", 0,
-			                                       "x", 0,
-			                                       "time", .5,
-			                                       "islocal", true,
-			                                       "easeType", "easeInBack",
-			                                       "name", "signMove" + player_id));
+			if(gameObject)
+			{
+				iTween.StopByName("signMove" + player_id);
+				iTween.MoveTo(gameObject, iTween.Hash ("y", 0,
+				                                       "x", 0,
+				                                       "time", .5,
+				                                       "islocal", true,
+				                                       "easeType", "easeInBack",
+				                                       "name", "signMove" + player_id));
+			}
 			isScoring = true;
 			
 			main.Resolve(this);

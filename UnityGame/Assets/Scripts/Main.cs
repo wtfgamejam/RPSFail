@@ -5,6 +5,10 @@ public class Main : MonoBehaviour {
 	
 	private Sign currentSign;
 
+	public PlayerController player1;
+	public PlayerController player2;
+	public PlayerController player3;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -30,15 +34,18 @@ public class Main : MonoBehaviour {
 		{
 			Debug.Log ("WINNER!");
 
+			iTween.Stop(currentSign.gameObject);
 			Destroy(currentSign.gameObject);
 			currentSign = in_sign;
 		}
 		else
 		{
 			Debug.Log ("LOSE!");
+			iTween.Stop(in_sign.gameObject);
 			Destroy(in_sign.gameObject);
 			if(in_sign.type == currentSign.type)
 			{
+				iTween.Stop(currentSign.gameObject);
 				Destroy(currentSign.gameObject);
 				Debug.Log ("well actually a tie!");
 			}
