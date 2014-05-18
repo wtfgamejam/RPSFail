@@ -153,7 +153,7 @@ public class Sign : MonoBehaviour {
 		get {return m_type;}
 		set {
 			m_type = value;
-			Debug.Log ("Is Visible: " + isVisible);
+//			Debug.Log ("Is Visible: " + isVisible);
 			// Change sprite here, based on visible property
 			if(isVisible) UpdateSprite(m_type);
 			else UpdateSprite(BASE_ID);

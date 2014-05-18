@@ -59,7 +59,7 @@ public class Main : MonoBehaviour {
 			{
 				iTween.Stop(currentSign.gameObject);
 				Destroy(currentSign.gameObject);
-				Debug.Log ("well actually a tie!");
+				Debug.Log ("TIE!");
 			}
 		}
 	}
