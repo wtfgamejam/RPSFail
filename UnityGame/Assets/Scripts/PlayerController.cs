@@ -4,15 +4,16 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public int score;
-	public int meter;
 	public int id;
 	public Sign currentSign;
+
+	private int m_meter;
 
 	public Sign sign;
 
 	// Use this for initialization
 	void Start () {
-
+		InvokeRepeating ("UpdateMeter", 1.5f, 0.05f);
 	}
 	
 	// Update is called once per frame
@@ -35,6 +36,18 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown ("Whoa" + id)) {
 			Debug.Log("Pressed Whoa");
 		}
+
+
+	}
+
+	void UpdateMeter () {
+		if (meter <= 100) {
+			meter += 1;
+			if ( meter > 0 ){
+				renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, meter)); 
+				Debug.Log ("sign_id: "+id+ " meter: " + meter);
+			}
+		}
 	}
 
 	public void SendSign( int signType )
@@ -45,5 +58,11 @@ public class PlayerController : MonoBehaviour {
 			signClone.Initialize(signType, id);
 			currentSign = signClone;
 		}
+	}
+
+	public int meter
+	{
+		get {return m_meter;}
+		set {m_meter = value;}
 	}
 }
