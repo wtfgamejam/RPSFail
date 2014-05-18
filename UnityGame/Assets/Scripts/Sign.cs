@@ -42,7 +42,7 @@ public class Sign : MonoBehaviour {
 	void Start () {
 	iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
 	                                        "x", 0,
-	                                        "time", 10,
+	                                        "time", 7,
 	                                        "islocal", true,
 	                                        "easeType", "linear",
 	                                        "name", "signMove" + player_id));
@@ -60,13 +60,13 @@ public class Sign : MonoBehaviour {
 			                                       "x", 0,
 			                                       "time", .5,
 			                                       "islocal", true,
-			                                       "easeType", "inBack",
+			                                       "easeType", "easeInBack",
 			                                       "name", "signMove" + player_id));
 			isScoring = true;
 		}
 		if (path_percent_complete < 80 && !isMeterCharging) {
 			isMeterCharging = true;
-			iTween.RotateAdd(gameObject, iTween.Hash("z",360) );
+			iTween.RotateAdd(gameObject, iTween.Hash("y",180) );
 		}
 	}
 
