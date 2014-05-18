@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Main : MonoBehaviour {
 	
@@ -8,6 +9,15 @@ public class Main : MonoBehaviour {
 	public PlayerController player1;
 	public PlayerController player2;
 	public PlayerController player3;
+
+	private Dictionary<int, PlayerController> players;
+
+	void Awake() {
+		players = new Dictionary<int, PlayerController>();
+		players.Add(1, player1);
+		players.Add(2, player2);
+		players.Add(3, player3);
+	}
 
 	// Use this for initialization
 	void Start () {

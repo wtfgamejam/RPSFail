@@ -111,11 +111,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: m_Name
-      value: rightOrigin
+      value: player2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: id
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
@@ -133,7 +133,7 @@ GameObject:
   - 212: {fileID: 547187631}
   - 114: {fileID: 547187630}
   m_Layer: 0
-  m_Name: leftOrigin
+  m_Name: player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,6 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f241fd26630b84ab993459afc990c031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 547187630}
+  player2: {fileID: 728291867}
+  player3: {fileID: 1627421538}
 --- !u!1 &618896658
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +352,7 @@ GameObject:
   - 212: {fileID: 728291868}
   - 114: {fileID: 728291867}
   m_Layer: 0
-  m_Name: rightOrigin
+  m_Name: player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  id: 3
+  id: 2
   currentSign: {fileID: 0}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
 --- !u!212 &728291868
@@ -441,6 +444,18 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 547187630}
+    - target: {fileID: 11400000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 728291867}
+    - target: {fileID: 11400000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
+      propertyPath: player3
+      value: 
+      objectReference: {fileID: 1627421538}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
   m_RootGameObject: {fileID: 590649354}
@@ -512,7 +527,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: m_Name
-      value: leftOrigin
+      value: player1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: id
@@ -611,7 +626,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: m_Name
-      value: topOrigin
+      value: player3
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 04ea272e1b0db47f1a0721fc8b6da546, type: 2}
       propertyPath: id
@@ -633,7 +648,7 @@ GameObject:
   - 212: {fileID: 1627421539}
   - 114: {fileID: 1627421538}
   m_Layer: 0
-  m_Name: topOrigin
+  m_Name: player3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
