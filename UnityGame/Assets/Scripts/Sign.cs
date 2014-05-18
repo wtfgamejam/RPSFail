@@ -17,6 +17,12 @@ public class Sign : MonoBehaviour {
 	private int m_type;
 	private bool m_scoring;
 	private bool m_visible;
+	private bool m_charging;
+
+	private int player_id;
+	private float path_location;
+	private float path_percent_complete;
+	private float path_length;
 
 	public Dictionary<int, string> spriteNames;
 
@@ -34,22 +40,44 @@ public class Sign : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
-		                                        "x", 0,
-		                                        "time", 10,
-		                                        "islocal", true,
-		                                        "easeType", "linear"));
+	iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
+	                                        "x", 0,
+	                                        "time", 10,
+	                                        "islocal", true,
+	                                        "easeType", "linear",
+	                                        "name", "signMove" + player_id));
+	path_length = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
+	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (path_percent_complete < 20 && !isScoring) {
+			// Drop in the center
+			isScoring = true;
+		}
+		if (path_percent_complete < 80 && !isMeterCharging) {
+			isMeterCharging = true;
+		}
 	}
 
-	public void Initialize(int in_type)
+	// 
+	void FixedUpdate () {
+		path_location = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
+		print (path_location);
+
+		path_percent_complete = path_location / path_length * 100;
+		print (Mathf.Round (path_percent_complete));
+	}
+
+	public void Initialize(int in_type, int in_player_id)
 	{
+		player_id = in_player_id;
+		print (player_id);
 		type = in_type;
 		isVisible = true;
+
 	}
 
 // OPERATIONS
@@ -84,7 +112,13 @@ public class Sign : MonoBehaviour {
 		get {return m_scoring;}
 		set {m_scoring = value;}
 	}
-	
+
+	public bool isMeterCharging
+	{
+		get {return m_charging;}
+		set {m_charging = value;}
+	}
+
 	public bool isVisible 
 	{
 		get {return m_visible;}

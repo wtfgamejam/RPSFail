@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		currentSign = 0;
 	}
 	
 	// Update is called once per frame
@@ -39,8 +39,11 @@ public class PlayerController : MonoBehaviour {
 
 	public void SendSign( int signType )
 	{
-		Sign signClone = (Sign) Instantiate(sign, transform.position, transform.rotation);
-		signClone.transform.parent = gameObject.transform.parent;
-		signClone.Initialize(signType);
+		if (currentSign == 0) { 
+			currentSign = signType;
+			Sign signClone = (Sign) Instantiate(sign, transform.position, transform.rotation);
+			signClone.transform.parent = gameObject.transform.parent;
+			signClone.Initialize(signType, id);
+		}
 	}
 }
