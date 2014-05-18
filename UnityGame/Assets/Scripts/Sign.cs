@@ -92,7 +92,7 @@ public class Sign : MonoBehaviour {
 			                                       "name", "signMove" + player_id));
 			isScoring = true;
 			
-			main.Resolve(type);
+			main.Resolve(this);
 			
 		}
 		if (path_percent_complete < 80 && !isMeterCharging) {
