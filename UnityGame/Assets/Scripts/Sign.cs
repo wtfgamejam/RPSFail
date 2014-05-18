@@ -21,7 +21,8 @@ public class Sign : MonoBehaviour {
 	private bool m_visible;
 	private bool m_charging;
 
-	private int player_id;
+	public int player_id;
+
 	private float path_location;
 	private float path_percent_complete;
 	private float path_length;
@@ -98,11 +99,12 @@ public class Sign : MonoBehaviour {
 				                                       "name", "signBounce" + player_id));
 			}
 			isScoring = true;
-			
+			isMeterCharging = false;
+
 			main.Resolve(this);
-			
+
 		}
-		if (path_percent_complete < 80 && !isMeterCharging) {
+		if (path_percent_complete < 80 && !isScoring && !isMeterCharging) {
 			isMeterCharging = true;
 			isVisible = true;
 			iTween.RotateAdd(gameObject, iTween.Hash("y",180) );
@@ -160,7 +162,10 @@ public class Sign : MonoBehaviour {
 	public bool isMeterCharging
 	{
 		get {return m_charging;}
-		set {m_charging = value;}
+		set {
+			m_charging = value;
+			main.MeterCharging(this);
+		}
 	}
 
 	public bool isVisible 

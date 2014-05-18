@@ -65,4 +65,14 @@ public class Main : MonoBehaviour {
 		}
 	}
 
+	public void MeterCharging(Sign sign) {
+		PlayerController player = players [sign.player_id];
+		print ("isMeterCharging: " + sign.isMeterCharging);
+		if (sign.isMeterCharging) {
+			player.StartMeter ();
+		} else {
+			player.StopMeter ();
+		}
+	}
+
 }
