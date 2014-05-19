@@ -15,7 +15,20 @@ public class TitleScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		iTween.MoveTo(GameObject.Find("rock"), iTween.Hash("y",1,
+		                                                   "delay", 0f,
+		                                                   "easeType", "easeOutElastic",
+		                                                   "islocal",true));
+
+		iTween.MoveTo(GameObject.Find("paper"), iTween.Hash("y",1,
+		                                                    "delay", 1f,
+		                                                    "easeType", "easeOutElastic",
+		                                                    "islocal",true));
+
+		iTween.MoveTo(GameObject.Find("scissors"), iTween.Hash("y",1,
+		                                                       "delay", 2f,
+		                                                       "easeType", "easeOutElastic",
+		                                                       "islocal",true));
 	}
 	
 	// Update is called once per frame
