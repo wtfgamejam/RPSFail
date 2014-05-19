@@ -181,7 +181,7 @@ public class Sign : MonoBehaviour {
 		isVisible = false;
 
 	}
-
+	
 // OPERATIONS
 
 	private void UpdateSprite(int in_type)
