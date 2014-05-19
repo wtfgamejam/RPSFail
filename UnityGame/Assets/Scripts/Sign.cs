@@ -12,7 +12,9 @@ public class Sign : MonoBehaviour {
 	public const string ROCK_NAME = "rock";
 	public const string PAPER_NAME = "paper";
 	public const string SCISSORS_NAME = "scissors";
-
+	public const int COMBAT_ZONE = 80;
+	public const int SCORING_ZONE = 25;
+	
 	private const float SPRITE_SCALE = 0.5f;
 
 	private float m_speed;
@@ -65,7 +67,7 @@ public class Sign : MonoBehaviour {
 	void Start () {
 		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
 	                                        	"x", 0,
-	                                        	"time", 7,
+	                                        	"speed", 2,
 	                                        	"islocal", true,
 	                                        	"easeType", "linear",
 	                                        	"name", "signMove" + player_id));
@@ -86,7 +88,7 @@ public class Sign : MonoBehaviour {
 		path_percent_complete = path_location / path_length * 100;
 		//print (Mathf.Round (path_percent_complete));
 		
-		if (path_percent_complete < 25 && !isScoring) {
+		if (path_percent_complete < SCORING_ZONE && !isScoring) {
 			// Drop in the center
 			if(gameObject)
 			{
@@ -104,13 +106,17 @@ public class Sign : MonoBehaviour {
 			main.Resolve(this);
 
 		}
-		if (path_percent_complete < 80 && !isScoring && !isMeterCharging) {
+		if (path_percent_complete < COMBAT_ZONE && !isScoring && !isMeterCharging) {
 			isMeterCharging = true;
 			iTween.RotateAdd(gameObject, iTween.Hash("y",180, 
 			                                         "easeType", "easeInBack",
 			                                         "oncomplete","RotateComplete",
 			                                         "speed", 500,
 			                                         "onompletetarget", gameObject) );
+		}
+
+		if (path_percent_complete < COMBAT_ZONE && path_percent_complete < SCORING_ZONE) {
+			
 		}
 	}
 

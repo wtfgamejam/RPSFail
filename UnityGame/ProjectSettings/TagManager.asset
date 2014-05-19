@@ -12,7 +12,7 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
+  User Layer 8: Phaser
   User Layer 9: 
   User Layer 10: 
   User Layer 11: 
@@ -48,4 +48,8 @@ TagManager:
   - name: Signs
     userID: 2
     uniqueID: 1440402435
+    locked: 0
+  - name: Phaser
+    userID: 3
+    uniqueID: 176668033
     locked: 0
