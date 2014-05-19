@@ -140,6 +140,9 @@ public class Sign : MonoBehaviour {
 	{
 //		Debug.Log("Player Id "+in_player_id);
 		player_id = in_player_id;
+		if (player_id == 1) gameObject.GetComponent<SpriteRenderer>().color = new Color(.963F, 0.428F, 0.428F, 1F);
+		if (player_id == 2) gameObject.GetComponent<SpriteRenderer>().color = new Color(0.3F, 0.950F, 0.711F, 1F);
+		if (player_id == 3) gameObject.GetComponent<SpriteRenderer>().color = new Color(0.591F, 0.861F, 0.961F, 1F);
 		type = in_type;
 		isVisible = false;
 

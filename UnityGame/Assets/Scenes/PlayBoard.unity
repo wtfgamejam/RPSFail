@@ -319,7 +319,7 @@ Camera:
   m_GameObject: {fileID: 590649354}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -603,6 +603,18 @@ Prefab:
     - target: {fileID: 2000000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
       propertyPath: field of view
       value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
+      propertyPath: m_HDR
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d89ae091a69eb454f8a893b07082fa54, type: 2}

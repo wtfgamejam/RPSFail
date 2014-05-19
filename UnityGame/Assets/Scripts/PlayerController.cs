@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//InvokeRepeating ("UpdateMeter", 1.5f, 0.05f);
-		//renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, meter)); 
 	}
 	
 	// Update is called once per frame
@@ -35,8 +33,12 @@ public class PlayerController : MonoBehaviour {
 			SendSign(Sign.SCISSORS_ID);
 		}
 		
-		if (Input.GetButtonDown ("Whoa" + id)) {
-//			Debug.Log("Pressed Whoa");
+		if (Input.GetButton ("Phaser" + id)) {
+			if(currentSign != null){
+				meter.StopMeter();
+				meter.DecreaseMeter();
+				currentSign.isMeterCharging = false;
+			}
 		}
 
 		score++;

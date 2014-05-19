@@ -149,7 +149,7 @@ InputManager:
     axis: 0
     joyNum: 3
   - serializedVersion: 3
-    m_Name: Whoa1
+    m_Name: Phaser1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -165,7 +165,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Whoa2
+    m_Name: Phaser2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -181,7 +181,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: Whoa3
+    m_Name: Phaser3
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

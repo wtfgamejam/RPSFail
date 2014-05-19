@@ -15,22 +15,30 @@ public class MeterController : MonoBehaviour {
 	
 	}
 
-	void UpdateMeter () {
+	void IncreaseMeter () {
 		if (meter <= 100) {
-			meter += 1;
+			meter += 2;
 			if ( meter > 0 ){
 				renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, meter)); 
 			}
 		}
 	}
 
+	public void DecreaseMeter () {
+		if (meter > 0) {
+			meter -= 1;
+			renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, meter)); 
+		}
+	}
+
 	public void StartMeter () {
-		InvokeRepeating ("UpdateMeter", 0.1f, 0.0375f);
+		InvokeRepeating ("IncreaseMeter", 0.1f, 0.075f);
 	}
 	
 	public void StopMeter () {
 		CancelInvoke ();
 	}
+
 
 	public int meter
 	{
