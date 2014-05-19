@@ -78,10 +78,14 @@ public class PlayerController : MonoBehaviour {
 			score = score + scoreStep;
 		}
 
+		// Handle being stunned.
 		if (currentSign != null && beingStunned && !currentSign.isScoring) {
 			currentSign.stun_multiplier = 2f;
+			currentSign.gameObject.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
 		} else if (currentSign != null) {
 			currentSign.stun_multiplier = 1f;
+			iTween.StopByName("shakeSign" + id);
+			currentSign.gameObject.transform.localScale = new Vector3(.5f,.51f,.5f);
 		}
 	}
 
