@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+	public const int scoreStep = 1;
 
-	public int score;
+	public int score = 0;
 	public int id;
 	public Sign currentSign;
 
@@ -41,13 +42,16 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		score++;
+		if(currentSign != null && currentSign.isScoring)
+		{
+			score = score + scoreStep;
+		}
 	}
 
 	void OnGUI() {
 		Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
 
-		GUI.Label(new Rect(pos.x, pos.y, 140, 20), ""+score);
+		GUI.Label(new Rect(pos.x, Screen.height - pos.y, 140, 20), ""+score);
 	}
 
 	public void StartMeter () {
