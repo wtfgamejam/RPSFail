@@ -62,6 +62,10 @@ public class Main : MonoBehaviour {
 				//Destroy(currentSign.gameObject);
 				currentSign.DestroySequenceStart();
 				Debug.Log ("TIE!");
+				iTween.ShakePosition(gameObject,iTween.Hash("amount",new Vector3(.25f,.25f,.25f),
+				                                            "time", .5f,
+				                                            "islocal",true));	
+
 			}
 			in_sign.DestroySequenceStart();
 		}
