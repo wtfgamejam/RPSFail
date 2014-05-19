@@ -15,6 +15,8 @@ public class TitleScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		PlayerPrefs.DeleteAll();
+
 		iTween.MoveTo(GameObject.Find("rock"), iTween.Hash("y",1,
 		                                                   "delay", 0f,
 		                                                   "easeType", "easeOutElastic",
