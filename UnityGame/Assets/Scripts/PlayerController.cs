@@ -86,11 +86,6 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if(currentSign != null && currentSign.isScoring)
-		{
-			score = score + scoreStep;
-		}
-
 		// Handle being stunned.
 		if (currentSign != null && beingStunned && !currentSign.isResolving) {
 			currentSign.stun_multiplier = 2f;
