@@ -86,13 +86,17 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+<<<<<<< HEAD
 		if(currentSign != null && currentSign.isScoring)
 		{
 			score = score + scoreStep;
 		}
 
 		// Handle being stunned.
+		if (currentSign != null && beingStunned && !currentSign.isScoring) {
+=======
 		if (currentSign != null && beingStunned && !currentSign.isResolving) {
+>>>>>>> 7e57b06b601141c5ff791eb11e49d2cbfa908f6c
 			currentSign.stun_multiplier = 2f;
 			currentSign.gameObject.transform.localScale = new Vector3(0.25f,0.25f,0.25f);
 		} else if (currentSign != null) {
@@ -136,10 +140,9 @@ public class PlayerController : MonoBehaviour {
 		Debug.Log("Rounds won " + roundsWon);
 		PlayerPrefs.SetInt("CurrentWinner", id);
 
-		if(roundsWon >= ROUNDS_TO_WIN)
+		if(roundsWon == ROUNDS_TO_WIN)
 		{
 			//end game
-			Application.LoadLevel (4);
 		}
 		else
 		{

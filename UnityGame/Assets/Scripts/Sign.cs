@@ -75,7 +75,7 @@ public class Sign : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		move_speed = 2f;
+		move_speed = .5f;
 		stun_multiplier = 1f;
 
 //		// Rotate to north
