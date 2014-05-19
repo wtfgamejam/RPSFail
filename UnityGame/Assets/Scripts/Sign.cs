@@ -64,11 +64,11 @@ public class Sign : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
-	                                        "x", 0,
-	                                        "time", 7,
-	                                        "islocal", true,
-	                                        "easeType", "linear",
-	                                        "name", "signMove" + player_id));
+	                                        	"x", 0,
+	                                        	"time", 7,
+	                                        	"islocal", true,
+	                                        	"easeType", "linear",
+	                                        	"name", "signMove" + player_id));
 		// Rotate to north
 		gameObject.transform.localEulerAngles = new Vector3(0,0,0);
 
@@ -106,19 +106,39 @@ public class Sign : MonoBehaviour {
 		}
 		if (path_percent_complete < 80 && !isScoring && !isMeterCharging) {
 			isMeterCharging = true;
-			isVisible = true;
-			iTween.RotateAdd(gameObject, iTween.Hash("y",180) );
+			iTween.RotateAdd(gameObject, iTween.Hash("y",180, 
+			                                         "easeType", "easeInBack",
+			                                         "oncomplete","RotateComplete",
+			                                         "speed", 500,
+			                                         "onompletetarget", gameObject) );
 		}
 	}
 
-	// 
-	void FixedUpdate () {
+	public void RotateComplete () {
+		isVisible = true;
+	}
 
+	public void OnDestroy() {
+	
+	}
+
+	public void DestroySequenceStart() {	
+		gameObject.particleSystem.Play ();
+		iTween.ScaleBy(gameObject,
+		            iTween.Hash("amount", new Vector3(-0.5f,0,0),
+		            "time", .5f,
+                    "oncomplete","DestroySequenceComplete",
+                    "onompletetarget", gameObject) );
+	}
+
+	private void DestroySequenceComplete() {
+		iTween.Stop (gameObject);
+		DestroyObject (gameObject);
 	}
 
 	public void Initialize(int in_type, int in_player_id)
 	{
-		Debug.Log("Player Id "+in_player_id);
+//		Debug.Log("Player Id "+in_player_id);
 		player_id = in_player_id;
 		type = in_type;
 		isVisible = false;
@@ -129,8 +149,8 @@ public class Sign : MonoBehaviour {
 
 	private void UpdateSprite(int in_type)
 	{
-		Debug.Log(in_type);
-		Debug.Log(spriteNames[in_type]);
+//		Debug.Log(in_type);
+//		Debug.Log(spriteNames[in_type]);
 		//Does loading a rescource every time cause a problem?
 		gameObject.GetComponent<SpriteRenderer> ().sprite = Resources.Load(spriteNames[in_type], typeof(Sprite)) as Sprite;
 	}
@@ -147,7 +167,7 @@ public class Sign : MonoBehaviour {
 		get {return m_type;}
 		set {
 			m_type = value;
-			Debug.Log ("Is Visible: " + isVisible);
+//			Debug.Log ("Is Visible: " + isVisible);
 			// Change sprite here, based on visible property
 			if(isVisible) UpdateSprite(m_type);
 			else UpdateSprite(BASE_ID);

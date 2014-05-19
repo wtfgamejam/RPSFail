@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 	public int score;
 	public int id;
 	public Sign currentSign;
+
+	public ParticleSystem exploder;
 	
 	public MeterController meter;
 	public Sign sign;
@@ -19,22 +21,22 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("Rock" + id)) {
-			Debug.Log("Pressed Rock");
+//			Debug.Log("Pressed Rock");
 			SendSign(Sign.ROCK_ID);
 		}
 
 		if (Input.GetButtonDown ("Paper" + id)) {
-			Debug.Log("Pressed Paper");
+//			Debug.Log("Pressed Paper");
 			SendSign(Sign.PAPER_ID);
 		}
 
 		if (Input.GetButtonDown ("Scissors" + id)) {
-			Debug.Log("Pressed Scissors");
+//			Debug.Log("Pressed Scissors");
 			SendSign(Sign.SCISSORS_ID);
 		}
 		
 		if (Input.GetButtonDown ("Whoa" + id)) {
-			Debug.Log("Pressed Whoa");
+//			Debug.Log("Pressed Whoa");
 		}
 
 		score++;

@@ -40,34 +40,36 @@ public class Main : MonoBehaviour {
 		int test = ((currentSign.type + 1) % 3);
 		// Scissors resolves to 0 after mod, change it to 3
 		if(test == 0) test = 3;
-		Debug.Log("test? "+test);
 
 		// if the current sign + 1 is equal to in_sign
 		if( in_sign.type == test )
 		{
 			Debug.Log ("WINNER!");
 
-			iTween.Stop(currentSign.gameObject);
-			Destroy(currentSign.gameObject);
+			//iTween.Stop(currentSign.gameObject);
+			//Destroy(currentSign.gameObject);
+			currentSign.DestroySequenceStart();
 			currentSign = in_sign;
 		}
 		else
 		{
 			Debug.Log ("LOSE!");
-			iTween.Stop(in_sign.gameObject);
-			Destroy(in_sign.gameObject);
+			//iTween.Stop(in_sign.gameObject);
+			//Destroy(in_sign.gameObject);
+			in_sign.DestroySequenceStart();
 			if(in_sign.type == currentSign.type)
 			{
-				iTween.Stop(currentSign.gameObject);
-				Destroy(currentSign.gameObject);
-				Debug.Log ("well actually a tie!");
+				//iTween.Stop(currentSign.gameObject);
+				//Destroy(currentSign.gameObject);
+				currentSign.DestroySequenceStart();
+				Debug.Log ("TIE!");
 			}
 		}
 	}
 
 	public void MeterCharging(Sign sign) {
 		PlayerController player = players [sign.player_id];
-		print ("isMeterCharging: " + sign.isMeterCharging);
+		// Debug.Log ("isMeterCharging: " + sign.isMeterCharging);
 		if (sign.isMeterCharging) {
 			player.StartMeter ();
 		} else {
