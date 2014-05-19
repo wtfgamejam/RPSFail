@@ -123,6 +123,7 @@ public class Sign : MonoBehaviour {
 	}
 
 	public void DestroySequenceStart() {	
+		gameObject.particleSystem.Play ();
 		iTween.ScaleBy(gameObject,
 		            iTween.Hash("amount", new Vector3(-0.5f,0,0),
 		            "time", .5f,

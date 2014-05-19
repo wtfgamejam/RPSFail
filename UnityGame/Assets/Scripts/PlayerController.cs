@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour {
 	public int score;
 	public int id;
 	public Sign currentSign;
+
+	public ParticleSystem exploder;
 	
 	public MeterController meter;
 	public Sign sign;

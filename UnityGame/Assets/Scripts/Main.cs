@@ -61,7 +61,7 @@ public class Main : MonoBehaviour {
 			{
 				//iTween.Stop(currentSign.gameObject);
 				//Destroy(currentSign.gameObject);
-				in_sign.DestroySequenceStart();
+				currentSign.DestroySequenceStart();
 				Debug.Log ("TIE!");
 			}
 		}
