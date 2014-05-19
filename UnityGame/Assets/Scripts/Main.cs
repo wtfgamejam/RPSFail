@@ -56,7 +56,6 @@ public class Main : MonoBehaviour {
 			Debug.Log ("LOSE!");
 			//iTween.Stop(in_sign.gameObject);
 			//Destroy(in_sign.gameObject);
-			in_sign.DestroySequenceStart();
 			if(in_sign.type == currentSign.type)
 			{
 				//iTween.Stop(currentSign.gameObject);
@@ -64,6 +63,7 @@ public class Main : MonoBehaviour {
 				currentSign.DestroySequenceStart();
 				Debug.Log ("TIE!");
 			}
+			in_sign.DestroySequenceStart();
 		}
 	}
 
