@@ -33,6 +33,13 @@ public class Sign : MonoBehaviour {
 
 	private Main main;
 
+	public Transform origin;
+	public Transform destination;
+
+	public float dist;
+	public float move_speed;
+	public float stun_multiplier;
+	
 // HOUSEKEEPING
 	void Awake() {
 		spriteNames = new Dictionary<int, string>();
@@ -65,28 +72,27 @@ public class Sign : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
-	                                        	"x", 0,
-	                                        	"speed", 2,
-	                                        	"islocal", true,
-	                                        	"easeType", "linear",
-	                                        	"name", "signMove" + player_id));
-		// Rotate to north
+	
+		move_speed = 2f;
+		stun_multiplier = 1f;
+
+//		// Rotate to north
 		gameObject.transform.localEulerAngles = new Vector3(0,0,0);
 
 		// Calculate path_length
-		path_length = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
+		//path_length = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
 	
+		origin = gameObject.transform;
+		destination = gameObject.transform.parent;
 
+		path_length = Vector3.Distance (origin.position, destination.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		path_location = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
-		//print (path_location);
-		
-		path_percent_complete = path_location / path_length * 100;
-		//print (Mathf.Round (path_percent_complete));
+     	path_percent_complete = path_location / path_length * 100;
+		print ("path_percent_complete: " + path_percent_complete);
 		
 		if (path_percent_complete < SCORING_ZONE && !isScoring) {
 			// Drop in the center
@@ -117,6 +123,17 @@ public class Sign : MonoBehaviour {
 
 		if (path_percent_complete < COMBAT_ZONE && path_percent_complete < SCORING_ZONE) {
 			
+		}
+
+		// Move the sprite along the path.
+		dist = Vector3.Distance (origin.position, destination.position);
+
+		if (dist > 0) {
+			Vector3 pointA = origin.position;
+			Vector3 pointB = destination.position;
+			
+			Vector3 pointAlongLine = ((Time.deltaTime * move_speed) / stun_multiplier)  * Vector3.Normalize(pointB - pointA) + pointA;
+			gameObject.transform.position = pointAlongLine;
 		}
 	}
 
