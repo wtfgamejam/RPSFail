@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayBoard.unity
   - enabled: 1
     path: Assets/Scenes/RoundOver.unity
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity

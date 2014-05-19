@@ -127,9 +127,10 @@ public class PlayerController : MonoBehaviour {
 		Debug.Log("Rounds won " + roundsWon);
 		PlayerPrefs.SetInt("CurrentWinner", id);
 
-		if(roundsWon == ROUNDS_TO_WIN)
+		if(roundsWon >= ROUNDS_TO_WIN)
 		{
 			//end game
+			Application.LoadLevel (4);
 		}
 		else
 		{

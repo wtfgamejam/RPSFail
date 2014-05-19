@@ -6,6 +6,8 @@ public class RoundEnd : MonoBehaviour {
 	public SpriteRenderer player1;
 	public SpriteRenderer player2;
 	public SpriteRenderer player3;
+
+	public bool isEndGame = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -46,7 +48,14 @@ public class RoundEnd : MonoBehaviour {
 
 	void RestartRound()
 	{
-		StartCoroutine(LoadLevel(2.0f,2));
+		if(isEndGame)
+		{
+			StartCoroutine(LoadLevel(2.0f,0));
+		}
+		else
+		{
+			StartCoroutine(LoadLevel(2.0f,2));
+		}
 	}
 
 	IEnumerator LoadLevel(float delay, int level)
