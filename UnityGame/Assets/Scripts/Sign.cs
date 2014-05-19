@@ -18,6 +18,7 @@ public class Sign : MonoBehaviour {
 	private float m_speed;
 	private int m_type;
 	private bool m_scoring;
+	private bool m_resolving;
 	private bool m_visible;
 	private bool m_charging;
 
@@ -40,6 +41,7 @@ public class Sign : MonoBehaviour {
 		spriteNames.Add(SCISSORS_ID, SCISSORS_NAME);
 
 		isScoring = false;
+		isResolving = false;
 		isVisible = false;
 
 		// Set scale
@@ -86,7 +88,7 @@ public class Sign : MonoBehaviour {
 		path_percent_complete = path_location / path_length * 100;
 		//print (Mathf.Round (path_percent_complete));
 		
-		if (path_percent_complete < 25 && !isScoring) {
+		if (path_percent_complete < 25 && !isResolving) {
 			// Drop in the center
 			if(gameObject)
 			{
@@ -96,15 +98,17 @@ public class Sign : MonoBehaviour {
 				                                       "time", .5,
 				                                       "islocal", true,
 				                                       "easeType", "easeInBack",
-				                                       "name", "signBounce" + player_id));
+				                                       "name", "signBounce" + player_id,
+				                                       "oncomplete", "EnterMiddleComplete",
+				                                       "oncompletetarget", gameObject));
 			}
-			isScoring = true;
+			isResolving = true;
 			isMeterCharging = false;
 
 			main.Resolve(this);
 
 		}
-		if (path_percent_complete < 80 && !isScoring && !isMeterCharging) {
+		if (path_percent_complete < 80 && !isResolving && !isMeterCharging) {
 			isMeterCharging = true;
 			iTween.RotateAdd(gameObject, iTween.Hash("y",180, 
 			                                         "easeType", "easeInBack",
@@ -112,6 +116,11 @@ public class Sign : MonoBehaviour {
 			                                         "speed", 500,
 			                                         "onompletetarget", gameObject) );
 		}
+	}
+
+	public void EnterMiddleComplete () {
+		Debug.Log ("Made it to the middle");
+		isScoring = true;
 	}
 
 	public void RotateComplete () {
@@ -181,6 +190,12 @@ public class Sign : MonoBehaviour {
 	{
 		get {return m_scoring;}
 		set {m_scoring = value;}
+	}
+
+	public bool isResolving 
+	{
+		get {return m_resolving;}
+		set {m_resolving = value;}
 	}
 
 	public bool isMeterCharging
