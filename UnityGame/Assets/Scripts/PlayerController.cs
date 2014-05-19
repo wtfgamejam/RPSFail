@@ -37,7 +37,13 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log("Pressed Whoa");
 		}
 
+		score++;
+	}
 
+	void OnGUI() {
+		Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+
+		GUI.Label(new Rect(pos.x, pos.y, 140, 20), ""+score);
 	}
 
 	public void StartMeter () {
