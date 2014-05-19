@@ -13,42 +13,64 @@ public class PlayerController : MonoBehaviour {
 
 	private bool m_phasersOnStun;
 	private bool m_beingStunned;
-	
+
+	AudioSource phaser_attack;
+	AudioSource phaser_sustain;
+	AudioSource phaser_release;
+
 	// Use this for initialization
 	void Start () {
+		AudioSource[] audios = GetComponents<AudioSource>();
+		phaser_attack = audios[0];
+		phaser_sustain = audios[1];
+		phaser_release = audios[2];
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		if (Input.GetButtonDown ("Rock" + id)) {
-//			Debug.Log("Pressed Rock");
 			SendSign(Sign.ROCK_ID);
 		}
 
 		if (Input.GetButtonDown ("Paper" + id)) {
-//			Debug.Log("Pressed Paper");
+
 			SendSign(Sign.PAPER_ID);
 		}
 
 		if (Input.GetButtonDown ("Scissors" + id)) {
-//			Debug.Log("Pressed Scissors");
 			SendSign(Sign.SCISSORS_ID);
 		}
-		
+		if (Input.GetButtonDown ("Phaser" + id)) {
+			phaser_attack.Play();
+		}
+
 		if (Input.GetButton ("Phaser" + id)) {
-			if(currentSign != null && meter.meter > 0){
+			if(currentSign != null) {
 				meter.StopMeter();
 				meter.DecreaseMeter();
 				currentSign.isMeterCharging = false;
+			}
+
+			if (meter.meter > 1) {
 				phasersOnStun = true;
+				phaser_sustain.Play();
 			} else {
 				phasersOnStun = false;
+				phaser_sustain.Stop();
+				phaser_attack.Stop();
 			}
 		}
 
 		if (Input.GetButtonUp ("Phaser" + id)) {
-			phasersOnStun = false;
+			if (phasersOnStun){
+				phasersOnStun = false;
+				phaser_release.Play();
+			} else {
+				phaser_sustain.Stop();
+				phaser_attack.Stop();
+				phaser_release.Stop();
+			}
 		}
 
 		if(currentSign != null && currentSign.isScoring)
