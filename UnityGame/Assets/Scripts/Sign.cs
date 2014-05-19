@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,7 +12,9 @@ public class Sign : MonoBehaviour {
 	public const string ROCK_NAME = "rock";
 	public const string PAPER_NAME = "paper";
 	public const string SCISSORS_NAME = "scissors";
-
+	public const int COMBAT_ZONE = 80;
+	public const int SCORING_ZONE = 25;
+	
 	private const float SPRITE_SCALE = 0.5f;
 
 	private float m_speed;
@@ -67,7 +69,7 @@ public class Sign : MonoBehaviour {
 	void Start () {
 		iTween.MoveTo (gameObject, iTween.Hash ("y", 0,
 	                                        	"x", 0,
-	                                        	"time", 7,
+	                                        	"speed", 2,
 	                                        	"islocal", true,
 	                                        	"easeType", "linear",
 	                                        	"name", "signMove" + player_id));
@@ -115,6 +117,10 @@ public class Sign : MonoBehaviour {
 			                                         "oncomplete","RotateComplete",
 			                                         "speed", 500,
 			                                         "onompletetarget", gameObject) );
+		}
+
+		if (path_percent_complete < COMBAT_ZONE && path_percent_complete < SCORING_ZONE) {
+			
 		}
 	}
 

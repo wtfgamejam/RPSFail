@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour {
 	public int score = 0;
 	public int id;
 	public Sign currentSign;
-
 	public ParticleSystem exploder;
-	
 	public MeterController meter;
 	public Sign sign;
 
+	private bool m_phasersOnStun;
+	private bool m_beingStunned;
+	
 	// Use this for initialization
 	void Start () {
 	}
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour {
 				meter.StopMeter();
 				meter.DecreaseMeter();
 				currentSign.isMeterCharging = false;
+				phasersOnStun = true;
 			}
 		}
 
@@ -62,6 +64,10 @@ public class PlayerController : MonoBehaviour {
 		meter.StopMeter();
 	}
 
+	public void ShootPhaser (){
+		Debug.Log ("Shooting Phaser");
+	}
+
 	public void SendSign( int signType )
 	{
 		if (currentSign == null) { 
@@ -72,5 +78,15 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-
+// Getters and Setters
+	public bool phasersOnStun
+	{
+		get {return m_phasersOnStun;}
+		set {m_phasersOnStun = value;}
+	}
+	public bool beingStunned
+	{
+		get {return m_beingStunned;}
+		set {m_beingStunned = value;}
+	}	
 }

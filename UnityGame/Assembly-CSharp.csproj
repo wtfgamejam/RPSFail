@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Countdown.cs" />
      <Compile Include="Assets\Scripts\Main.cs" />
      <Compile Include="Assets\Scripts\MeterController.cs" />
+     <Compile Include="Assets\Scripts\Phaser.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Sign.cs" />
      <Compile Include="Assets\Scripts\TitleScript.cs" />
