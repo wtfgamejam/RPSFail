@@ -46,7 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Countdown.cs" />
+     <Compile Include="Assets\Scripts\Countdown.cs" />
      <Compile Include="Assets\Scripts\Main.cs" />
      <Compile Include="Assets\Scripts\MeterController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
