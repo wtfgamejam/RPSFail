@@ -26,6 +26,11 @@ public class Main : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		player1.beingStunned = false;
+		player2.beingStunned = false;
+		player3.beingStunned = false;
+
 		if (player1.phasersOnStun) {
 			player2.beingStunned = true;
 			player3.beingStunned = true;

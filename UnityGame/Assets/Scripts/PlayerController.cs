@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (Input.GetButtonDown ("Rock" + id)) {
 //			Debug.Log("Pressed Rock");
 			SendSign(Sign.ROCK_ID);
@@ -36,17 +37,29 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 		if (Input.GetButton ("Phaser" + id)) {
-			if(currentSign != null){
+			if(currentSign != null && meter.meter > 0){
 				meter.StopMeter();
 				meter.DecreaseMeter();
 				currentSign.isMeterCharging = false;
 				phasersOnStun = true;
+			} else {
+				phasersOnStun = false;
 			}
+		}
+
+		if (Input.GetButtonUp ("Phaser" + id)) {
+			phasersOnStun = false;
 		}
 
 		if(currentSign != null && currentSign.isScoring)
 		{
 			score = score + scoreStep;
+		}
+
+		if (currentSign != null && beingStunned && !currentSign.isScoring) {
+			currentSign.stun_multiplier = 2f;
+		} else if (currentSign != null) {
+			currentSign.stun_multiplier = 1f;
 		}
 	}
 
