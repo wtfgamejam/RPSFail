@@ -122,6 +122,19 @@ public class Sign : MonoBehaviour {
 	
 	}
 
+	public void DestroySequenceStart() {	
+		iTween.ScaleBy(gameObject,
+		            iTween.Hash("amount", new Vector3(-0.5f,0,0),
+		            "time", .5f,
+                    "oncomplete","DestroySequenceComplete",
+                    "onompletetarget", gameObject) );
+	}
+
+	private void DestroySequenceComplete() {
+		iTween.Stop (gameObject);
+		DestroyObject (gameObject);
+	}
+
 	public void Initialize(int in_type, int in_player_id)
 	{
 //		Debug.Log("Player Id "+in_player_id);

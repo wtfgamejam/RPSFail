@@ -46,19 +46,22 @@ public class Main : MonoBehaviour {
 		{
 			Debug.Log ("WINNER!");
 
-			iTween.Stop(currentSign.gameObject);
-			Destroy(currentSign.gameObject);
+			//iTween.Stop(currentSign.gameObject);
+			//Destroy(currentSign.gameObject);
+			currentSign.DestroySequenceStart();
 			currentSign = in_sign;
 		}
 		else
 		{
 			Debug.Log ("LOSE!");
-			iTween.Stop(in_sign.gameObject);
-			Destroy(in_sign.gameObject);
+			//iTween.Stop(in_sign.gameObject);
+			//Destroy(in_sign.gameObject);
+			in_sign.DestroySequenceStart();
 			if(in_sign.type == currentSign.type)
 			{
-				iTween.Stop(currentSign.gameObject);
-				Destroy(currentSign.gameObject);
+				//iTween.Stop(currentSign.gameObject);
+				//Destroy(currentSign.gameObject);
+				in_sign.DestroySequenceStart();
 				Debug.Log ("TIE!");
 			}
 		}
