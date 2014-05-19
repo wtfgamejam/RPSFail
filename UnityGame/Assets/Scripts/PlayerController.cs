@@ -1,18 +1,27 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	public const int scoreStep = 1;
 
+	public const int ROUNDS_TO_WIN = 5;
+	public const int WIN_VALAUE = 100;
+	public const int SCORE_STEP = 50;
 	public int score = 0;
+
 	public int id;
 	public Sign currentSign;
 	public ParticleSystem exploder;
 	public MeterController meter;
 	public Sign sign;
 
+	public int roundsWon;
+
 	private bool m_phasersOnStun;
 	private bool m_beingStunned;
+
+	private bool scoreRunning;
+	private bool hasStartedScoring;
+	
 
 	AudioSource phaser_attack;
 	AudioSource phaser_sustain;
@@ -20,6 +29,10 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		scoreRunning = false;
+		hasStartedScoring = false;
+
+		roundsWon = PlayerPrefs.GetInt("Round"+id, 0);
 		AudioSource[] audios = GetComponents<AudioSource>();
 		phaser_attack = audios[0];
 		phaser_sustain = audios[1];
@@ -87,12 +100,58 @@ public class PlayerController : MonoBehaviour {
 			iTween.StopByName("shakeSign" + id);
 			currentSign.gameObject.transform.localScale = new Vector3(.5f,.51f,.5f);
 		}
+
+		if(currentSign != null && currentSign.isScoring && !hasStartedScoring)
+		{
+			hasStartedScoring = true;
+			scoreRunning = true;
+			Debug.Log("what score"+score);
+			InvokeRepeating("ScoreTick", 0f, 1.0f);
+		}
+
+		if(currentSign == null)
+		{
+			hasStartedScoring = false;
+			CancelInvoke("ScoreTick");
+		}
+	}
+
+	void ScoreTick()
+	{
+		if ( score < WIN_VALAUE)
+		{
+			score = score + SCORE_STEP;
+		}
+		else
+		{
+			CancelInvoke("ScoreTick");
+			EvaluateWinCondition();
+		}
+	}
+
+	void EvaluateWinCondition()
+	{
+		roundsWon++;
+		PlayerPrefs.SetInt("Round"+id, roundsWon);
+		Debug.Log("Rounds won " + roundsWon);
+		PlayerPrefs.SetInt("CurrentWinner", id);
+
+		if(roundsWon == ROUNDS_TO_WIN)
+		{
+			//end game
+		}
+		else
+		{
+			//end round
+			Application.LoadLevel (3);
+		}
 	}
 
 	void OnGUI() {
 		Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
 
 		GUI.Label(new Rect(pos.x, Screen.height - pos.y, 140, 20), ""+score);
+		GUI.Label(new Rect(pos.x + 10, Screen.height + 10 - pos.y, 140, 20), "Rounds Won:"+roundsWon);
 	}
 
 	public void StartMeter () {
