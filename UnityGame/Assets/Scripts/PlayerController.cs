@@ -86,19 +86,18 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if(currentSign != null && currentSign.isScoring)
+		if (currentSign != null && beingStunned && !currentSign.isResolving) {
+			currentSign.stun_multiplier = 2f;
+		} else if (currentSign != null) {
+			currentSign.stun_multiplier = 1f;
+		}
+
 		if(currentSign != null && currentSign.isScoring && !hasStartedScoring)
 		{
 			hasStartedScoring = true;
 			scoreRunning = true;
 			Debug.Log("what score"+score);
 			InvokeRepeating("ScoreTick", 0f, 1.0f);
-		}
-
-		if (currentSign != null && beingStunned && !currentSign.isScoring) {
-			currentSign.stun_multiplier = 2f;
-		} else if (currentSign != null) {
-			currentSign.stun_multiplier = 1f;
 		}
 
 		if(currentSign == null)
