@@ -90,7 +90,7 @@ public class Sign : MonoBehaviour {
 		path_percent_complete = path_location / path_length * 100;
 		//print (Mathf.Round (path_percent_complete));
 		
-		if (path_percent_complete < 25 && !isResolving) {
+		if (path_percent_complete < SCORING_ZONE && !isResolving) {
 			// Drop in the center
 			if(gameObject)
 			{
@@ -110,7 +110,7 @@ public class Sign : MonoBehaviour {
 			main.Resolve(this);
 
 		}
-		if (path_percent_complete < 80 && !isResolving && !isMeterCharging) {
+		if (path_percent_complete < COMBAT_ZONE && !isResolving && !isMeterCharging) {
 			isMeterCharging = true;
 			iTween.RotateAdd(gameObject, iTween.Hash("y",180, 
 			                                         "easeType", "easeInBack",
