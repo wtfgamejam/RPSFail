@@ -26,6 +26,11 @@ public class Main : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		player1.beingStunned = false;
+		player2.beingStunned = false;
+		player3.beingStunned = false;
+
 		if (player1.phasersOnStun) {
 			player2.beingStunned = true;
 			player3.beingStunned = true;
@@ -56,21 +61,14 @@ public class Main : MonoBehaviour {
 		if( in_sign.type == test )
 		{
 			Debug.Log ("WINNER!");
-
-			//iTween.Stop(currentSign.gameObject);
-			//Destroy(currentSign.gameObject);
 			currentSign.DestroySequenceStart();
 			currentSign = in_sign;
 		}
 		else
 		{
 			Debug.Log ("LOSE!");
-			//iTween.Stop(in_sign.gameObject);
-			//Destroy(in_sign.gameObject);
 			if(in_sign.type == currentSign.type)
 			{
-				//iTween.Stop(currentSign.gameObject);
-				//Destroy(currentSign.gameObject);
 				currentSign.DestroySequenceStart();
 				Debug.Log ("TIE!");
 				iTween.ShakePosition(gameObject,iTween.Hash("amount",new Vector3(.25f,.25f,.25f),

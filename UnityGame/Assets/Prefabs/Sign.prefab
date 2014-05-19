@@ -42,6 +42,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_id: 0
+  origin: {fileID: 0}
+  destination: {fileID: 0}
+  dist: 0
+  move_speed: 0
+  stun_multiplier: 0
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

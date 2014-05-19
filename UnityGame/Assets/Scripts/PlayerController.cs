@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -22,46 +22,83 @@ public class PlayerController : MonoBehaviour {
 	private bool scoreRunning;
 	private bool hasStartedScoring;
 	
+
+	AudioSource phaser_attack;
+	AudioSource phaser_sustain;
+	AudioSource phaser_release;
+
 	// Use this for initialization
 	void Start () {
 		scoreRunning = false;
 		hasStartedScoring = false;
 
 		roundsWon = PlayerPrefs.GetInt("Round"+id, 0);
+		AudioSource[] audios = GetComponents<AudioSource>();
+		phaser_attack = audios[0];
+		phaser_sustain = audios[1];
+		phaser_release = audios[2];
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (Input.GetButtonDown ("Rock" + id)) {
-//			Debug.Log("Pressed Rock");
 			SendSign(Sign.ROCK_ID);
 		}
 
 		if (Input.GetButtonDown ("Paper" + id)) {
-//			Debug.Log("Pressed Paper");
+
 			SendSign(Sign.PAPER_ID);
 		}
 
 		if (Input.GetButtonDown ("Scissors" + id)) {
-//			Debug.Log("Pressed Scissors");
 			SendSign(Sign.SCISSORS_ID);
 		}
-		
+		if (Input.GetButtonDown ("Phaser" + id)) {
+			phaser_attack.Play();
+		}
+
 		if (Input.GetButton ("Phaser" + id)) {
-			if(currentSign != null){
+			if(currentSign != null) {
 				meter.StopMeter();
 				meter.DecreaseMeter();
 				currentSign.isMeterCharging = false;
+			}
+
+			if (meter.meter > 1) {
 				phasersOnStun = true;
+				phaser_sustain.Play();
+			} else {
+				phasersOnStun = false;
+				phaser_sustain.Stop();
+				phaser_attack.Stop();
 			}
 		}
 
+		if (Input.GetButtonUp ("Phaser" + id)) {
+			if (phasersOnStun){
+				phasersOnStun = false;
+				phaser_release.Play();
+			} else {
+				phaser_sustain.Stop();
+				phaser_attack.Stop();
+				phaser_release.Stop();
+			}
+		}
+
+		if(currentSign != null && currentSign.isScoring)
 		if(currentSign != null && currentSign.isScoring && !hasStartedScoring)
 		{
 			hasStartedScoring = true;
 			scoreRunning = true;
 			Debug.Log("what score"+score);
 			InvokeRepeating("ScoreTick", 0f, 1.0f);
+		}
+
+		if (currentSign != null && beingStunned && !currentSign.isScoring) {
+			currentSign.stun_multiplier = 2f;
+		} else if (currentSign != null) {
+			currentSign.stun_multiplier = 1f;
 		}
 
 		if(currentSign == null)
