@@ -94,8 +94,7 @@ public class Sign : MonoBehaviour {
 	void Update () {
 		path_location = Vector3.Distance(gameObject.transform.position, gameObject.transform.parent.position);
      	path_percent_complete = path_location / path_length * 100;
-		print ("path_percent_complete: " + path_percent_complete);
-		
+
 		if (path_percent_complete < SCORING_ZONE && !isResolving) {
 			// Drop in the center
 			if(gameObject)
@@ -131,6 +130,9 @@ public class Sign : MonoBehaviour {
 
 		// Move the sprite along the path.
 		dist = Vector3.Distance (origin.position, destination.position);
+
+		// Stun multiplier
+
 
 		if (dist > 0) {
 			Vector3 pointA = origin.position;
