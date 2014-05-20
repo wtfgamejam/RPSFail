@@ -50,7 +50,7 @@ public class RoundEnd : MonoBehaviour {
 	{
 		if(isEndGame)
 		{
-			StartCoroutine(LoadLevel(2.0f,0));
+			StartCoroutine(LoadLevel(3.0f,0));
 		}
 		else
 		{
