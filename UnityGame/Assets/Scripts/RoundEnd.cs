@@ -34,9 +34,9 @@ public class RoundEnd : MonoBehaviour {
 
 		winner.enabled = true;
 
-		iTween.RotateAdd(winner.gameObject, iTween.Hash("y",720,
-		                                                "easeType", "easeOutSine",
-		                                         		"speed", 300,
+		iTween.ScaleFrom(winner.gameObject, iTween.Hash("easeType", "easeOutElastic",
+		                                                "speed", 30,
+		                                                "scale", new Vector3(10f,10f,10f),
 		                                                "oncomplete", "RestartRound",
 		                                                "oncompletetarget", gameObject) );
 	}
