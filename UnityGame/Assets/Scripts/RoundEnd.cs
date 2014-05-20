@@ -54,7 +54,7 @@ public class RoundEnd : MonoBehaviour {
 		}
 		else
 		{
-			StartCoroutine(LoadLevel(2.0f,2));
+			StartCoroutine(LoadLevel(2.0f,1));
 		}
 	}
 

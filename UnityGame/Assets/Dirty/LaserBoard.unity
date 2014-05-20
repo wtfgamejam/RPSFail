@@ -939,6 +939,7 @@ MonoBehaviour:
   exploder: {fileID: 0}
   meter: {fileID: 239763896}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
+  roundsWon: 0
 --- !u!82 &1904259746
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1165,6 +1166,7 @@ MonoBehaviour:
   exploder: {fileID: 0}
   meter: {fileID: 699655642}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
+  roundsWon: 0
 --- !u!82 &1924531116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1459,6 +1461,7 @@ MonoBehaviour:
   exploder: {fileID: 0}
   meter: {fileID: 682322810}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
+  roundsWon: 0
 --- !u!82 &2063883983
 AudioSource:
   m_ObjectHideFlags: 0
