@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour {
 	private bool m_phasersOnStun;
 	private bool m_beingStunned;
 
-	private bool scoreRunning;
 	private bool hasStartedScoring;
 	
 
