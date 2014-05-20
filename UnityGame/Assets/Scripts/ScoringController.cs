@@ -10,9 +10,9 @@ public class ScoringController : MonoBehaviour {
 		renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, score));
 	}
 
-	public void IncreaseScore () {
+	public void IncreaseScore (int step) {
 		if (score <= 100) {
-			score += 2;
+			score += step;
 			if ( score > 0 ){
 				renderer.material.SetFloat("_Cutoff", Mathf.InverseLerp(100, 0, score)); 
 			}

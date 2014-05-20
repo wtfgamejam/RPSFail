@@ -5,13 +5,14 @@ public class PlayerController : MonoBehaviour {
 
 	public const int ROUNDS_TO_WIN = 3;
 	public const int WIN_VALAUE = 100;
-	public const int SCORE_STEP = 50;
+	public const int SCORE_STEP = 5;
 	public int score = 0;
 
 	public int id;
 	public Sign currentSign;
 	public ParticleSystem exploder;
 	public MeterController meter;
+	public ScoringController scoreCounter;
 	public Sign sign;
 
 	public int roundsWon;
@@ -112,6 +113,7 @@ public class PlayerController : MonoBehaviour {
 		if ( score < WIN_VALAUE)
 		{
 			score = score + SCORE_STEP;
+			scoreCounter.IncreaseScore(SCORE_STEP);
 		}
 		else
 		{
@@ -142,8 +144,8 @@ public class PlayerController : MonoBehaviour {
 	void OnGUI() {
 		Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
 
-		GUI.Label(new Rect(pos.x, Screen.height - pos.y, 140, 20), ""+score);
-		GUI.Label(new Rect(pos.x + 10, Screen.height + 10 - pos.y, 140, 20), "Rounds Won:"+roundsWon);
+		//GUI.Label(new Rect(pos.x, Screen.height - pos.y, 140, 20), ""+score);
+		GUI.Label(new Rect(pos.x + 20, Screen.height + 20 - pos.y, 140, 20), "Rounds Won:"+roundsWon);
 	}
 
 	public void StartMeter () {

@@ -389,6 +389,10 @@ Prefab:
       propertyPath: exploder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6cddaa63c407c4ba39a72ff23fc7d0ea, type: 2}
+      propertyPath: scoreCounter
+      value: 
+      objectReference: {fileID: 555480111}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cddaa63c407c4ba39a72ff23fc7d0ea, type: 2}
   m_RootGameObject: {fileID: 1924531113}
@@ -1264,6 +1268,10 @@ Prefab:
       propertyPath: exploder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6cddaa63c407c4ba39a72ff23fc7d0ea, type: 2}
+      propertyPath: scoreCounter
+      value: 
+      objectReference: {fileID: 707267814}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cddaa63c407c4ba39a72ff23fc7d0ea, type: 2}
   m_RootGameObject: {fileID: 2063883980}
@@ -1438,6 +1446,7 @@ MonoBehaviour:
   currentSign: {fileID: 0}
   exploder: {fileID: 0}
   meter: {fileID: 239763896}
+  scoreCounter: {fileID: 108840955}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
   roundsWon: 0
 --- !u!82 &1904259746
@@ -1666,6 +1675,7 @@ MonoBehaviour:
   currentSign: {fileID: 0}
   exploder: {fileID: 0}
   meter: {fileID: 699655642}
+  scoreCounter: {fileID: 555480111}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
   roundsWon: 0
 --- !u!82 &1924531116
@@ -1908,6 +1918,10 @@ Prefab:
       propertyPath: exploder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6cddaa63c407c4ba39a72ff23fc7d0ea, type: 2}
+      propertyPath: scoreCounter
+      value: 
+      objectReference: {fileID: 108840955}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cddaa63c407c4ba39a72ff23fc7d0ea, type: 2}
   m_RootGameObject: {fileID: 1904259743}
@@ -1962,6 +1976,7 @@ MonoBehaviour:
   currentSign: {fileID: 0}
   exploder: {fileID: 0}
   meter: {fileID: 682322810}
+  scoreCounter: {fileID: 707267814}
   sign: {fileID: 11400000, guid: 0553fbb1e305a4289a5085fc0365cc35, type: 2}
   roundsWon: 0
 --- !u!82 &2063883983
