@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		scoreRunning = false;
 		hasStartedScoring = false;
 
 		roundsWon = PlayerPrefs.GetInt("Round"+id, 0);
@@ -97,7 +96,6 @@ public class PlayerController : MonoBehaviour {
 		if(currentSign != null && currentSign.isScoring && !hasStartedScoring)
 		{
 			hasStartedScoring = true;
-			scoreRunning = true;
 			Debug.Log("what score"+score);
 			InvokeRepeating("ScoreTick", 0f, 1.0f);
 		}
