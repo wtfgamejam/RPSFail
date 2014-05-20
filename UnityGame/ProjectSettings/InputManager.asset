@@ -5,6 +5,22 @@ InputManager:
   m_ObjectHideFlags: 0
   m_Axes:
   - serializedVersion: 3
+    m_Name: Select1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 1 button 0
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: Start1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -21,6 +37,22 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: Select2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 2 button 0
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: Start2
     descriptiveName: 
     descriptiveNegativeName: 
@@ -28,6 +60,22 @@ InputManager:
     positiveButton: r
     altNegativeButton: 
     altPositiveButton: joystick 2 button 3
+    gravity: 1000
+    dead: .00100000005
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Select3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 3 button 0
     gravity: 1000
     dead: .00100000005
     sensitivity: 1000
