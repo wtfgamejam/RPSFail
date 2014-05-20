@@ -166,8 +166,11 @@ public class Sign : MonoBehaviour {
 	}
 
 	private void DestroySequenceComplete() {
-		iTween.Stop (gameObject);
-		DestroyObject (gameObject);
+		if(gameObject)
+		{
+			iTween.Stop (gameObject);
+			DestroyObject (gameObject);
+		}
 	}
 
 	public void Initialize(int in_type, int in_player_id)

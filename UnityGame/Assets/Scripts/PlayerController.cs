@@ -97,7 +97,6 @@ public class PlayerController : MonoBehaviour {
 		if(currentSign != null && currentSign.isScoring && !hasStartedScoring)
 		{
 			hasStartedScoring = true;
-			Debug.Log("what score"+score);
 			InvokeRepeating("ScoreTick", 0f, 1.0f);
 		}
 
