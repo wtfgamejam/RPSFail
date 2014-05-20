@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	public const int ROUNDS_TO_WIN = 5;
 	public const int WIN_VALAUE = 100;
-	public const int SCORE_STEP = 50;
+	public const int SCORE_STEP = 5;
 	public int score = 0;
 
 	public int id;
