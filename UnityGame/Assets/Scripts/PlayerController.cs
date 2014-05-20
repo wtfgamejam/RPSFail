@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 		hasStartedScoring = false;
 
 		roundsWon = PlayerPrefs.GetInt("Round"+id, 0);
+
 		AudioSource[] audios = GetComponents<AudioSource>();
 		phaser_attack = audios[0];
 		phaser_sustain = audios[1];
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 			SendSign(Sign.SCISSORS_ID);
 		}
 		if (Input.GetButtonDown ("Phaser" + id)) {
-			phaser_attack.Play();
+//			phaser_attack.Play();
 		}
 
 		if (Input.GetButton ("Phaser" + id)) {
@@ -63,27 +64,25 @@ public class PlayerController : MonoBehaviour {
 				meter.StopMeter();
 				meter.DecreaseMeter();
 				currentSign.isMeterCharging = false;
-			}
 
-			if (meter.meter > 1) {
-				phasersOnStun = true;
-				phaser_sustain.Play();
-			} else {
-				phasersOnStun = false;
-				phaser_sustain.Stop();
-				phaser_attack.Stop();
+				if (meter.meter > 1) {
+					phasersOnStun = true;	
+					phaser_sustain.Play();
+				} else {
+					phasersOnStun = false;
+					phaser_sustain.Stop();
+					phaser_attack.Stop();
+				}
 			}
 		}
 
 		if (Input.GetButtonUp ("Phaser" + id)) {
 			if (phasersOnStun){
-				phasersOnStun = false;
-				phaser_release.Play();
-			} else {
-				phaser_sustain.Stop();
-				phaser_attack.Stop();
-				phaser_release.Stop();
+				phasersOnStun = false; 
 			}
+			phaser_sustain.Stop();
+			phaser_attack.Stop();
+			phaser_release.Stop();
 		}
 
 		// Handle being stunned.
